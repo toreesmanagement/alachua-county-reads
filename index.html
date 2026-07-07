@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alachua County Reads | Literacy Resource Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/branding/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/branding/favicon-16.png" />
+  <link rel="shortcut icon" href="images/branding/favicon.ico" />
+  <link rel="apple-touch-icon" href="images/branding/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="guide/guide.css" />
+</head>
+<body data-audio-title="Alachua County Reads home" data-audio-text="Welcome to Alachua County Reads. This site helps children, teens, adults, families, caregivers, and providers find literacy programs in Alachua County. Choose an age group to find programs, or use the navigation to see partners, submit a program, or learn more about the initiative.">
+  <header class="site-header acr-site-header">
+  <a href="index.html" class="acr-logo-link" aria-label="Alachua County Reads Home">
+    <img src="images/logo.png" alt="Alachua County Reads" class="site-logo" />
+  </a>
+
+  <nav class="main-nav acr-main-nav" aria-label="Main navigation">
+    <a href="index.html" class="active-nav" aria-current="page">Home</a>
+    <a href="programs.html">Find Programs</a>
+    <a href="partners.html">Community Partners</a>
+    <a href="submit.html">Submit a Program</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <div class="header-actions acr-header-actions">
+    <button class="listen-button" type="button" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded">volume_up</span>
+      Listen
+    </button>
+  </div>
+</header>
+<section class="audio-guide-strip" aria-label="Audio guide">
+  <div class="audio-guide-main">
+    <span class="material-symbols-rounded" aria-hidden="true">volume_up</span>
+    <div>
+      <strong>Need help reading?</strong>
+      <p>Click Listen to hear this page read aloud.</p>
+    </div>
+  </div>
+  <div class="audio-controls" role="group" aria-label="Audio controls">
+    <button type="button" class="audio-button primary-audio" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+      Listen to this page
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.pauseOrResume()">
+      <span class="material-symbols-rounded" aria-hidden="true">pause</span>
+      Pause / Resume
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.stop()">
+      <span class="material-symbols-rounded" aria-hidden="true">stop</span>
+      Stop
+    </button>
+    <label class="audio-speed-label">
+      Speed
+      <select id="audioSpeed" onchange="ACRAudio.setSpeed(this.value)">
+        <option value="0.75" selected>Slow</option>
+        <option value="0.9">Normal</option>
+        <option value="1.1">Fast</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Gainesville · Alachua County, Florida</p>
+      <h1>Helping Our Community<br /><span>Learn and Grow</span></h1>
+      <p class="hero-text">Find literacy programs and reading support for children, teens, adults, and families.</p>
+      <div class="hero-actions">
+        <a class="primary-button" href="#age-groups">Find Help</a>
+        <button class="secondary-button" onclick="speakText('Start by choosing the age group that best matches the person who needs help. You can then view programs, maps, directions, and support options.')">
+          <span class="material-symbols-rounded">play_arrow</span>
+          Listen Guide
+        </button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="images/hero-family.jpg" alt="Family reading together" />
+    </div>
+  </section>
+
+  <section class="quick-stats">
+    <div class="stat-card"><div class="stat-icon"><span class="material-symbols-rounded">family_restroom</span></div><div><strong>For All Ages</strong><p>From early childhood to adult learners</p></div></div>
+    <div class="stat-card"><div class="stat-icon"><span class="material-symbols-rounded">location_on</span></div><div><strong>Local Resources</strong><p>Programs across Alachua County</p></div></div>
+    <div class="stat-card"><div class="stat-icon"><span class="material-symbols-rounded">paid</span></div><div><strong>Free & Low Cost</strong><p>Community-focused options</p></div></div>
+    <div class="stat-card"><div class="stat-icon"><span class="material-symbols-rounded">language</span></div><div><strong>Accessible Support</strong><p>Visual, bilingual, and audio-ready</p></div></div>
+  </section>
+
+  <section class="section age-section" id="age-groups">
+    <div class="section-header">
+      <div>
+        <h2>Explore by Age Group</h2>
+        <p>Choose the age group that best matches the person who needs help.</p>
+      </div>
+      <button class="small-listen" onclick="speakText('Choose an age group. Each card opens programs and services for that age.')">
+        <span class="material-symbols-rounded">volume_up</span>
+        Listen
+      </button>
+    </div>
+
+    <div class="age-grid">
+      <a class="age-card" href="programs.html?age=0-5"><img src="images/age-0-5.jpg" alt="Young child" /><div class="age-icon"><span class="material-symbols-rounded">child_care</span></div><h3>Ages 0-5</h3><p>Early Childhood</p><span class="age-listen"><span class="material-symbols-rounded">arrow_forward</span> Open</span></a>
+      <a class="age-card" href="programs.html?age=5-8"><img src="images/age-5-8.jpg" alt="Elementary student" /><div class="age-icon"><span class="material-symbols-rounded">school</span></div><h3>Ages 5-8</h3><p>Early Elementary</p><span class="age-listen"><span class="material-symbols-rounded">arrow_forward</span> Open</span></a>
+      <a class="age-card" href="programs.html?age=8-11"><img src="images/age-8-11.jpg" alt="Upper elementary student" /><div class="age-icon"><span class="material-symbols-rounded">menu_book</span></div><h3>Ages 8-11</h3><p>Upper Elementary</p><span class="age-listen"><span class="material-symbols-rounded">arrow_forward</span> Open</span></a>
+      <a class="age-card" href="programs.html?age=11-14"><img src="images/age-11-14.jpg" alt="Middle school student" /><div class="age-icon"><span class="material-symbols-rounded">groups</span></div><h3>Ages 11-14</h3><p>Middle School</p><span class="age-listen"><span class="material-symbols-rounded">arrow_forward</span> Open</span></a>
+      <a class="age-card" href="programs.html?age=14-18"><img src="images/age-14-18.jpg" alt="High school student" /><div class="age-icon"><span class="material-symbols-rounded">workspace_premium</span></div><h3>Ages 14-18</h3><p>High School</p><span class="age-listen"><span class="material-symbols-rounded">arrow_forward</span> Open</span></a>
+      <a class="age-card" href="programs.html?age=adult"><img src="images/age-adult.jpg" alt="Adult learner" /><div class="age-icon"><span class="material-symbols-rounded">person</span></div><h3>Adults 18+</h3><p>Adult Literacy</p><span class="age-listen"><span class="material-symbols-rounded">arrow_forward</span> Open</span></a>
+    </div>
+  </section>
+
+  <section class="outside-help">
+    <div>
+      <h2>Need help with something else?</h2>
+      <p>Housing, food, bills, healthcare, and other local support.</p>
+    </div>
+    <a class="help-now-button" href="https://www.211.org/" target="_blank" rel="noopener">Get Help Now</a>
+  </section>
+
+  <section class="section board-demo-section">
+    <div class="section-header">
+      <div>
+        <h2>Built for Access, Trust, and Community</h2>
+        <p>This site helps residents find literacy resources through visual cards, maps, audio support, and clear program information.</p>
+      </div>
+    </div>
+    <div class="board-demo-grid">
+      <a href="programs.html" class="board-demo-card"><span class="material-symbols-rounded">map</span><h3>Map-Based Program Finder</h3><p>Cards show directions, transit links, distance, and program details.</p></a>
+      <a href="partners.html" class="board-demo-card"><span class="material-symbols-rounded">diversity_3</span><h3>Partner & Provider Hub</h3><p>Highlights community partners and explains the provider workflow.</p></a>
+      <a href="submit.html" class="board-demo-card"><span class="material-symbols-rounded">edit_note</span><h3>Submit a Program</h3><p>Providers can submit new or updated program information for review.</p></a>
+      <a href="about.html" class="board-demo-card"><span class="material-symbols-rounded">info</span><h3>About the Initiative</h3><p>Explains purpose, principles, governance, and the review process.</p></a>
+    </div>
+  </section>
+
+  <footer class="acr-footer">
+  <img src="images/logo.png" alt="Alachua County Reads" class="footer-logo" />
+  <p class="footer-tagline">Building Literacy for Life</p>
+  <p>© 2025 Alachua County Reads</p>
+  <p class="footer-links">
+    <a href="index.html">Home</a> ·
+    <a href="programs.html">Find Programs</a> ·
+    <a href="partners.html">Community Partners</a> ·
+    <a href="submit.html">Submit a Program</a> ·
+    <a href="about.html">About</a>
+  </p>
+</footer>
+
+  <script>
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.9;
+      window.speechSynthesis.speak(utterance);
+    }
+  </script>
+<script src="js/audio-accessibility.js"></script>
+<script src="guide/acr-guide.js"></script>
+</body>
+</html>

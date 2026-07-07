@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Programs | Alachua County Reads</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/branding/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/branding/favicon-16.png" />
+  <link rel="shortcut icon" href="images/branding/favicon.ico" />
+  <link rel="apple-touch-icon" href="images/branding/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="guide/guide.css" />
+</head>
+
+<body data-audio-title="Find literacy programs" data-audio-text="This page helps you find literacy programs by age group, location, cost, language, and support needs. You can search, use your location, view the map, listen to program summaries, and open directions by car, bus, walking, or bike.">
+
+<header class="site-header acr-site-header">
+  <a href="index.html" class="acr-logo-link" aria-label="Alachua County Reads Home">
+    <img src="images/logo.png" alt="Alachua County Reads" class="site-logo" />
+  </a>
+
+  <nav class="main-nav acr-main-nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="programs.html" class="active-nav" aria-current="page">Find Programs</a>
+    <a href="partners.html">Community Partners</a>
+    <a href="submit.html">Submit a Program</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <div class="header-actions acr-header-actions">
+    <button class="language-toggle active-lang" onclick="setLanguage('en', this)">EN</button>
+    <button class="language-toggle" onclick="setLanguage('es', this)">ES</button>
+    <button class="listen-button" type="button" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded">volume_up</span>
+      <span data-i18n="listen">Listen</span>
+    </button>
+  </div>
+</header>
+<section class="audio-guide-strip" aria-label="Audio guide">
+  <div class="audio-guide-main">
+    <span class="material-symbols-rounded" aria-hidden="true">volume_up</span>
+    <div>
+      <strong>Need help reading?</strong>
+      <p>Click Listen to hear this page read aloud.</p>
+    </div>
+  </div>
+  <div class="audio-controls" role="group" aria-label="Audio controls">
+    <button type="button" class="audio-button primary-audio" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+      Listen to this page
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.pauseOrResume()">
+      <span class="material-symbols-rounded" aria-hidden="true">pause</span>
+      Pause / Resume
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.stop()">
+      <span class="material-symbols-rounded" aria-hidden="true">stop</span>
+      Stop
+    </button>
+    <label class="audio-speed-label">
+      Speed
+      <select id="audioSpeed" onchange="ACRAudio.setSpeed(this.value)">
+        <option value="0.75" selected>Slow</option>
+        <option value="0.9">Normal</option>
+        <option value="1.1">Fast</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+
+<main class="programs-page">
+
+  <section class="programs-hero">
+    <p class="eyebrow" data-i18n="findSupport">Find literacy support</p>
+    <h1 id="pageTitle">Programs</h1>
+    <p id="pageIntro">Choose a program card to learn more.</p>
+  </section>
+
+  <section class="chooser-box">
+
+    <div class="chooser-header">
+      <div>
+        <h2 data-i18n="needHelpChoosing">Need help choosing?</h2>
+        <p data-i18n="chooseWhatSounds">Pick what sounds most like you. We'll suggest where to start.</p>
+      </div>
+
+      <div class="chooser-icon">
+        <span class="material-symbols-rounded">support_agent</span>
+      </div>
+    </div>
+
+    <div class="chooser-grid">
+
+      <button class="chooser-card" onclick="openRecommendation('english')">
+        <span class="material-symbols-rounded">translate</span>
+        <strong data-i18n="wantEnglish">I want to learn English</strong>
+      </button>
+
+      <button class="chooser-card" onclick="openRecommendation('reading')">
+        <span class="material-symbols-rounded">menu_book</span>
+        <strong data-i18n="needReading">I need help reading</strong>
+      </button>
+
+      <button class="chooser-card" onclick="openRecommendation('child')">
+        <span class="material-symbols-rounded">family_restroom</span>
+        <strong data-i18n="helpChild">I need help for my child</strong>
+      </button>
+
+      <button class="chooser-card" onclick="openRecommendation('ged')">
+        <span class="material-symbols-rounded">school</span>
+        <strong data-i18n="wantGED">I want my GED</strong>
+      </button>
+
+      <button class="chooser-card important-choice" onclick="openRecommendation('unsure')">
+        <span class="material-symbols-rounded">help</span>
+        <strong data-i18n="notSure">I don't know where to start</strong>
+      </button>
+
+    </div>
+
+  </section>
+
+  <section class="near-me-box">
+
+    <div class="near-me-left">
+      <div class="near-me-icon">
+        <span class="material-symbols-rounded">my_location</span>
+      </div>
+
+      <div>
+        <h2 data-i18n="nearMeTitle">Find programs near me</h2>
+        <p data-i18n="nearMeText">Use your location to help show nearby in-person programs first.</p>
+      </div>
+    </div>
+
+    <button class="near-me-button" onclick="useMyLocation()">
+      <span class="material-symbols-rounded">near_me</span>
+      <span data-i18n="useLocation">Use My Location</span>
+    </button>
+
+  </section>
+
+  <div id="locationMessage" class="location-message hidden"></div>
+
+  <!-- FAST SEARCH -->
+
+  <section class="program-search-box" aria-label="Search programs">
+    <div class="program-search-icon">
+      <span class="material-symbols-rounded">search</span>
+    </div>
+
+    <div class="program-search-copy">
+      <label for="programSearchInput">Search programs</label>
+      <p>Try Spanish, GED, adults, Gainesville, free, online, dyslexia, or bus.</p>
+    </div>
+
+    <input
+      id="programSearchInput"
+      type="search"
+      placeholder="Search by need, city, language, or program name"
+      oninput="searchPrograms(this.value)"
+    />
+
+    <button class="search-clear-button" onclick="clearProgramSearch()">
+      <span class="material-symbols-rounded">close</span>
+      Clear
+    </button>
+  </section>
+
+  <!-- RC1.2 INTERACTIVE MAP PANEL -->
+
+  <section class="board-map-panel rc-map-panel" aria-label="Interactive program map">
+    <div class="board-map-copy rc-map-copy">
+      <p class="eyebrow">Map + transportation</p>
+      <h2>Find a program you can reach</h2>
+      <p>Share your location to show nearby programs first. Select any program card to preview its location, then choose Drive, Bus, Walk, or Bike in Google Maps.</p>
+
+      <div id="selectedMapProgram" class="selected-map-program">
+        <span class="material-symbols-rounded">touch_app</span>
+        <div>
+          <strong>Select a program card</strong>
+          <p>The map preview and route buttons will update here.</p>
+        </div>
+      </div>
+
+      <div class="map-demo-actions rc-route-actions">
+        <button onclick="useMyLocation()">
+          <span class="material-symbols-rounded">my_location</span>
+          Use My Location
+        </button>
+        <button onclick="openSelectedRoute('driving')" class="secondary-map-action">
+          <span class="material-symbols-rounded">directions_car</span>
+          Drive
+        </button>
+        <button onclick="openSelectedRoute('transit')" class="secondary-map-action">
+          <span class="material-symbols-rounded">directions_bus</span>
+          Bus
+        </button>
+        <button onclick="openSelectedRoute('walking')" class="secondary-map-action">
+          <span class="material-symbols-rounded">directions_walk</span>
+          Walk
+        </button>
+        <button onclick="openSelectedRoute('bicycling')" class="secondary-map-action optional-bike-action">
+          <span class="material-symbols-rounded">directions_bike</span>
+          Bike
+        </button>
+        <button onclick="listenMapGuide()" class="secondary-map-action">
+          <span class="material-symbols-rounded">volume_up</span>
+          Listen
+        </button>
+      </div>
+    </div>
+
+    <div class="board-map-frame rc-map-frame">
+      <iframe
+        id="mapPreviewFrame"
+        title="Program location map"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Gainesville%2C%20FL&output=embed">
+      </iframe>
+      <div id="mapPreviewNote" class="map-preview-note">Select a program card to preview its location here.</div>
+    </div>
+  </section>
+
+  <section class="quick-help-section">
+
+    <div class="section-title-row">
+      <div>
+        <h2 data-i18n="whatNeed">What do you need help with?</h2>
+        <p data-i18n="quickChoose">Choose one to quickly find matching programs.</p>
+      </div>
+    </div>
+
+    <div class="quick-help-grid">
+
+      <button class="quick-help-card active-help" onclick="quickFilter('all', this)">
+        <span class="material-symbols-rounded">apps</span>
+        <strong data-i18n="allPrograms">All Programs</strong>
+      </button>
+
+      <button class="quick-help-card" onclick="quickFilter('english', this)">
+        <span class="material-symbols-rounded">translate</span>
+        <strong data-i18n="learnEnglish">Learn English</strong>
+      </button>
+
+      <button class="quick-help-card" onclick="quickFilter('reading', this)">
+        <span class="material-symbols-rounded">menu_book</span>
+        <strong data-i18n="helpReading">Help Reading</strong>
+      </button>
+
+      <button class="quick-help-card" onclick="quickFilter('free', this)">
+        <span class="material-symbols-rounded">paid</span>
+        <strong data-i18n="freePrograms">Free Programs</strong>
+      </button>
+
+      <button class="quick-help-card" onclick="quickFilter('virtual', this)">
+        <span class="material-symbols-rounded">computer</span>
+        <strong data-i18n="onlineHelp">Online Help</strong>
+      </button>
+
+      <button class="quick-help-card" onclick="quickFilter('ged', this)">
+        <span class="material-symbols-rounded">school</span>
+        <strong data-i18n="gedHelp">GED Help</strong>
+      </button>
+
+      <button class="quick-help-card" onclick="quickFilter('transportation', this)">
+        <span class="material-symbols-rounded">directions_bus</span>
+        <strong data-i18n="transportation">Transportation</strong>
+      </button>
+
+    </div>
+
+  </section>
+
+  <section class="filter-bar">
+
+    <button class="filter-chip active" onclick="filterBy('all', this)">
+      <span class="material-symbols-rounded">apps</span>
+      <span data-i18n="all">All</span>
+    </button>
+
+    <button class="filter-chip" onclick="filterBy('free', this)">
+      <span class="material-symbols-rounded">paid</span>
+      <span data-i18n="free">Free</span>
+    </button>
+
+    <button class="filter-chip" onclick="filterBy('in-person', this)">
+      <span class="material-symbols-rounded">school</span>
+      <span data-i18n="inPerson">In-Person</span>
+    </button>
+
+    <button class="filter-chip" onclick="filterBy('virtual', this)">
+      <span class="material-symbols-rounded">computer</span>
+      <span data-i18n="virtual">Virtual</span>
+    </button>
+
+    <button class="filter-chip" onclick="filterBy('english', this)">
+      <span class="material-symbols-rounded">language</span>
+      <span data-i18n="english">English</span>
+    </button>
+
+    <button class="filter-chip" onclick="filterBy('spanish', this)">
+      <span class="material-symbols-rounded">translate</span>
+      <span data-i18n="spanish">Spanish</span>
+    </button>
+
+  </section>
+
+  <section id="programResults" class="results-grid"></section>
+
+  <section class="community-section">
+    <div class="section-title-row">
+      <div>
+        <h2 data-i18n="communityResources">Community Resources</h2>
+        <p data-i18n="communityIntro">These are helpful coordination, hotline, and referral resources. They are not direct tutoring programs.</p>
+      </div>
+    </div>
+
+    <div id="communityResourcesGrid" class="community-grid"></div>
+  </section>
+
+</main>
+
+<div id="programModal" class="modal hidden">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">✖</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div id="recommendationModal" class="modal hidden">
+  <div class="modal-content recommendation-modal-content">
+    <button class="close-btn" onclick="closeRecommendation()">✖</button>
+    <div id="recommendationBody"></div>
+  </div>
+</div>
+
+<footer class="acr-footer">
+  <img src="images/logo.png" alt="Alachua County Reads" class="footer-logo" />
+  <p class="footer-tagline">Building Literacy for Life</p>
+  <p>© 2025 Alachua County Reads</p>
+  <p class="footer-links">
+    <a href="index.html">Home</a> ·
+    <a href="programs.html">Find Programs</a> ·
+    <a href="partners.html">Community Partners</a> ·
+    <a href="submit.html">Submit a Program</a> ·
+    <a href="about.html">About</a>
+  </p>
+</footer>
+
+<script src="data/program-data.js"></script>
+<script src="js/audio-accessibility.js"></script>
+<script src="js/programs.js"></script>
+
+<script src="guide/acr-guide.js"></script>
+</body>
+</html>

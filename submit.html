@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit a Program | Alachua County Reads</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/branding/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/branding/favicon-16.png" />
+  <link rel="shortcut icon" href="images/branding/favicon.ico" />
+  <link rel="apple-touch-icon" href="images/branding/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="guide/guide.css" />
+</head>
+<body data-audio-title="Submit a literacy program" data-audio-text="This page allows providers to submit literacy programs for review. Information should include program name, organization, age group, format, cost, address, accessibility, language support, and how people can join.">
+<header class="site-header acr-site-header">
+  <a href="index.html" class="acr-logo-link" aria-label="Alachua County Reads Home">
+    <img src="images/logo.png" alt="Alachua County Reads" class="site-logo" />
+  </a>
+
+  <nav class="main-nav acr-main-nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="programs.html">Find Programs</a>
+    <a href="partners.html">Community Partners</a>
+    <a href="submit.html" class="active-nav" aria-current="page">Submit a Program</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <div class="header-actions acr-header-actions">
+    <a class="header-link" href="review.html">Review Queue</a>
+    <button class="listen-button" type="button" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded">volume_up</span>
+      Listen
+    </button>
+  </div>
+</header>
+<section class="audio-guide-strip" aria-label="Audio guide">
+  <div class="audio-guide-main">
+    <span class="material-symbols-rounded" aria-hidden="true">volume_up</span>
+    <div>
+      <strong>Need help reading?</strong>
+      <p>Click Listen to hear this page read aloud.</p>
+    </div>
+  </div>
+  <div class="audio-controls" role="group" aria-label="Audio controls">
+    <button type="button" class="audio-button primary-audio" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+      Listen to this page
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.pauseOrResume()">
+      <span class="material-symbols-rounded" aria-hidden="true">pause</span>
+      Pause / Resume
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.stop()">
+      <span class="material-symbols-rounded" aria-hidden="true">stop</span>
+      Stop
+    </button>
+    <label class="audio-speed-label">
+      Speed
+      <select id="audioSpeed" onchange="ACRAudio.setSpeed(this.value)">
+        <option value="0.75" selected>Slow</option>
+        <option value="0.9">Normal</option>
+        <option value="1.1">Fast</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+
+<main class="submit-page">
+  <section class="submit-hero board-hero">
+    <div>
+      <p class="eyebrow">For nonprofits, agencies, schools, and community providers</p>
+      <h1>Submit a Literacy Program</h1>
+      <p>Programs submitted here enter a review queue. Once approved by Alachua County Reads, they can appear automatically as public resource cards.</p>
+    </div>
+    <div class="submit-hero-icon"><span class="material-symbols-rounded">approval_delegation</span></div>
+  </section>
+
+  <section class="approval-flow">
+    <div><span class="material-symbols-rounded">edit_note</span><strong>1. Provider submits</strong><p>Organization enters program details.</p></div>
+    <div><span class="material-symbols-rounded">fact_check</span><strong>2. ACR reviews</strong><p>Team verifies accuracy and legitimacy.</p></div>
+    <div><span class="material-symbols-rounded">published_with_changes</span><strong>3. Card appears</strong><p>Approved programs become public cards.</p></div>
+  </section>
+
+  <section class="submit-layout">
+    <aside class="submit-info-card">
+      <h2>Review Standards</h2>
+      <div class="submit-info-item"><span class="material-symbols-rounded">volunteer_activism</span><p>Public, nonprofit, government, school, faith-based, or community-serving programs are prioritized.</p></div>
+      <div class="submit-info-item"><span class="material-symbols-rounded">paid</span><p>Paid private/commercial tutoring is not included in this community directory unless explicitly approved.</p></div>
+      <div class="submit-info-item"><span class="material-symbols-rounded">verified</span><p>Listings should include current contact information, eligibility, cost, location, and language/accessibility details.</p></div>
+      <div class="submit-info-item"><span class="material-symbols-rounded">visibility</span><p>For the demo, approved items are saved in this browser. Production will use a secure review database.</p></div>
+      <a class="review-link-card" href="review.html"><span class="material-symbols-rounded">admin_panel_settings</span> Open Review Queue</a>
+    </aside>
+
+    <section class="provider-form-card">
+      <h2>Program Information</h2>
+      <p class="form-intro">Complete as much as possible. Required fields are marked by the browser.</p>
+
+      <form id="providerForm" onsubmit="submitProviderForm(event)">
+        <div class="form-grid">
+          <label>Program Name<input type="text" id="programName" required /></label>
+          <label>Organization Name<input type="text" id="organizationName" required /></label>
+          <label>Contact Person<input type="text" id="contactPerson" /></label>
+          <label>Contact Email<input type="email" id="contactEmail" /></label>
+          <label>Phone Number<input type="tel" id="phoneNumber" /></label>
+          <label>Website<input type="url" id="website" placeholder="https://..." /></label>
+        </div>
+
+        <label>Short Program Description<textarea id="description" rows="4" required></textarea></label>
+
+        <fieldset class="checkbox-section">
+          <legend>Age Groups Served</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" name="ageGroups" value="0-5" /> 0-5</label>
+            <label><input type="checkbox" name="ageGroups" value="5-8" /> 5-8</label>
+            <label><input type="checkbox" name="ageGroups" value="8-11" /> 8-11</label>
+            <label><input type="checkbox" name="ageGroups" value="11-14" /> 11-14</label>
+            <label><input type="checkbox" name="ageGroups" value="14-18" /> 14-18</label>
+            <label><input type="checkbox" name="ageGroups" value="adult" /> Adults 18+</label>
+          </div>
+        </fieldset>
+
+        <div class="form-grid">
+          <label>Format
+            <select id="format" required>
+              <option value="">Choose one</option><option>In-Person</option><option>Virtual</option><option>Hybrid</option><option>Home / Mail</option><option>Phone / Referral</option>
+            </select>
+          </label>
+          <label>Cost
+            <select id="cost" required>
+              <option value="">Choose one</option><option>Free</option><option>Free for eligible families</option><option>Low Cost</option><option>Sliding Scale</option><option>Income-Based Eligibility</option>
+            </select>
+          </label>
+          <label>Primary Location
+            <select id="location" required>
+              <option value="">Choose one</option><option>Gainesville</option><option>Alachua</option><option>Archer</option><option>High Springs</option><option>Newberry</option><option>Hawthorne</option><option>Waldo</option><option>Online</option><option>Countywide</option>
+            </select>
+          </label>
+          <label>Street Address<input type="text" id="address" placeholder="If in-person" /></label>
+        </div>
+
+        <fieldset class="checkbox-section">
+          <legend>Languages</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" name="languages" value="English" checked /> English</label>
+            <label><input type="checkbox" name="languages" value="Spanish" /> Spanish</label>
+            <label><input type="checkbox" name="languages" value="Haitian Creole" /> Haitian Creole</label>
+            <label><input type="checkbox" name="languages" value="Multiple Languages" /> Multiple Languages</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="checkbox-section">
+          <legend>Additional Support</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" name="support" value="Early Literacy" /> Early Literacy</label>
+            <label><input type="checkbox" name="support" value="Adult Literacy" /> Adult Literacy</label>
+            <label><input type="checkbox" name="support" value="ESL" /> ESL</label>
+            <label><input type="checkbox" name="support" value="GED Prep" /> GED Prep</label>
+            <label><input type="checkbox" name="support" value="Dyslexia Support" /> Dyslexia</label>
+            <label><input type="checkbox" name="support" value="Learning Disability" /> Learning Disability</label>
+            <label><input type="checkbox" name="support" value="Transportation" /> Transportation</label>
+            <label><input type="checkbox" name="support" value="Bus Route Accessible" /> Bus Route</label>
+            <label><input type="checkbox" name="support" value="Spanish Available" /> Spanish Available</label>
+            <label><input type="checkbox" name="support" value="ADA Accessible" /> ADA Accessible</label>
+            <label><input type="checkbox" name="support" value="Referral Required" /> Referral Required</label>
+            <label><input type="checkbox" name="support" value="Family Support" /> Family Support</label>
+          </div>
+        </fieldset>
+
+        <label>Eligibility / How to Join<textarea id="eligibility" rows="4"></textarea></label>
+        <label>Internal Notes for Review<textarea id="providerNotes" rows="3"></textarea></label>
+
+        <button class="submit-program-button" type="submit"><span class="material-symbols-rounded">send</span> Submit for Review</button>
+      </form>
+      <div id="submitMessage" class="submit-message hidden"></div>
+    </section>
+  </section>
+</main>
+
+<footer class="acr-footer">
+  <img src="images/logo.png" alt="Alachua County Reads" class="footer-logo" />
+  <p class="footer-tagline">Building Literacy for Life</p>
+  <p>© 2025 Alachua County Reads</p>
+  <p class="footer-links">
+    <a href="index.html">Home</a> ·
+    <a href="programs.html">Find Programs</a> ·
+    <a href="partners.html">Community Partners</a> ·
+    <a href="submit.html">Submit a Program</a> ·
+    <a href="about.html">About</a>
+  </p>
+</footer>
+<script src="js/submissions.js"></script>
+<script src="js/audio-accessibility.js"></script>
+<script src="guide/acr-guide.js"></script>
+</body>
+</html>

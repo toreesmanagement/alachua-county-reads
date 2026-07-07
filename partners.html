@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Partners | Alachua County Reads</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/branding/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/branding/favicon-16.png" />
+  <link rel="shortcut icon" href="images/branding/favicon.ico" />
+  <link rel="apple-touch-icon" href="images/branding/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="guide/guide.css" />
+</head>
+<body data-audio-title="Community partners" data-audio-text="This page highlights the organizations and providers that support literacy access in Alachua County. Partners help keep program information accurate and connect residents with services.">
+<header class="site-header acr-site-header">
+  <a href="index.html" class="acr-logo-link" aria-label="Alachua County Reads Home">
+    <img src="images/logo.png" alt="Alachua County Reads" class="site-logo" />
+  </a>
+
+  <nav class="main-nav acr-main-nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="programs.html">Find Programs</a>
+    <a href="partners.html" class="active-nav" aria-current="page">Community Partners</a>
+    <a href="submit.html">Submit a Program</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <div class="header-actions acr-header-actions">
+    <button class="listen-button" type="button" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded">volume_up</span>
+      Listen
+    </button>
+  </div>
+</header>
+<section class="audio-guide-strip" aria-label="Audio guide">
+  <div class="audio-guide-main">
+    <span class="material-symbols-rounded" aria-hidden="true">volume_up</span>
+    <div>
+      <strong>Need help reading?</strong>
+      <p>Click Listen to hear this page read aloud.</p>
+    </div>
+  </div>
+  <div class="audio-controls" role="group" aria-label="Audio controls">
+    <button type="button" class="audio-button primary-audio" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+      Listen to this page
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.pauseOrResume()">
+      <span class="material-symbols-rounded" aria-hidden="true">pause</span>
+      Pause / Resume
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.stop()">
+      <span class="material-symbols-rounded" aria-hidden="true">stop</span>
+      Stop
+    </button>
+    <label class="audio-speed-label">
+      Speed
+      <select id="audioSpeed" onchange="ACRAudio.setSpeed(this.value)">
+        <option value="0.75" selected>Slow</option>
+        <option value="0.9">Normal</option>
+        <option value="1.1">Fast</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+
+<main class="partners-page">
+  <section class="partners-hero">
+    <div>
+      <p class="eyebrow">Powered by collaboration</p>
+      <h1>Partners Make the Hub Possible</h1>
+      <p>Alachua County Reads is designed as a shared digital front door for literacy support. Nonprofits, schools, libraries, public agencies, universities, faith-based groups, and community programs can all help keep information accurate and useful.</p>
+    </div>
+    <div class="partners-hero-card"><span class="material-symbols-rounded">diversity_3</span><strong>Community-owned information</strong><p>Built for residents. Supported by partners. Reviewed for accuracy.</p></div>
+  </section>
+
+  <section class="partner-principles">
+    <article><span class="material-symbols-rounded">person_search</span><h2>User First</h2><p>The platform is designed for people seeking help, while giving boards and agencies the accountability they need.</p></article>
+    <article><span class="material-symbols-rounded">verified</span><h2>Verified Listings</h2><p>Programs should be reviewed before publication and re-checked regularly.</p></article>
+    <article><span class="material-symbols-rounded">accessibility_new</span><h2>Accessibility by Default</h2><p>Visual cards, audio support, language support, and maps reduce barriers to services.</p></article>
+  </section>
+
+  <section class="section-header partner-section-title">
+    <div><h2>Highlighted Partner Types</h2><p>These are the kinds of partners that make a reliable literacy resource hub possible.</p></div>
+  </section>
+
+  <section class="partner-grid">
+    <article class="partner-card"><span class="material-symbols-rounded">local_library</span><h3>Libraries</h3><p>Adult literacy, early literacy, digital skills, ESOL, book access, and public computer support.</p></article>
+    <article class="partner-card"><span class="material-symbols-rounded">school</span><h3>Schools & Adult Education</h3><p>Pre-K, ESOL, GED, school-based literacy support, referrals, and family engagement.</p></article>
+    <article class="partner-card"><span class="material-symbols-rounded">volunteer_activism</span><h3>Nonprofits</h3><p>Mentoring, tutoring, after-school support, adult learner services, and community outreach.</p></article>
+    <article class="partner-card"><span class="material-symbols-rounded">child_care</span><h3>Early Childhood Partners</h3><p>VPK, Head Start, school readiness, family literacy, and home visiting supports.</p></article>
+    <article class="partner-card"><span class="material-symbols-rounded">account_balance</span><h3>Public Agencies</h3><p>Funding, coordination, referrals, governance, and public accountability.</p></article>
+    <article class="partner-card"><span class="material-symbols-rounded">science</span><h3>Universities & Researchers</h3><p>Evidence-based support, evaluations, internships, volunteer pipelines, and learning innovation.</p></article>
+  </section>
+
+  <section class="partner-cta">
+    <div><h2>Want to add or update a program?</h2><p>Providers can submit program details for review. Approved listings can be added to the public card system.</p></div>
+    <a href="submit.html">Submit a Program</a>
+  </section>
+</main>
+
+<footer class="acr-footer">
+  <img src="images/logo.png" alt="Alachua County Reads" class="footer-logo" />
+  <p class="footer-tagline">Building Literacy for Life</p>
+  <p>© 2025 Alachua County Reads</p>
+  <p class="footer-links">
+    <a href="index.html">Home</a> ·
+    <a href="programs.html">Find Programs</a> ·
+    <a href="partners.html">Community Partners</a> ·
+    <a href="submit.html">Submit a Program</a> ·
+    <a href="about.html">About</a>
+  </p>
+</footer>
+<script>
+function speakText(text) { if (!('speechSynthesis' in window)) { alert('Audio narration is not available in this browser.'); return; } window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.rate = 0.88; u.lang = 'en-US'; window.speechSynthesis.speak(u); }
+function listenPartnersGuide() { speakText('This page explains how community partners support Alachua County Reads. Partners help submit programs, verify information, and keep the hub accurate for people seeking literacy support.'); }
+</script>
+<script src="js/audio-accessibility.js"></script>
+<script src="guide/acr-guide.js"></script>
+</body>
+</html>

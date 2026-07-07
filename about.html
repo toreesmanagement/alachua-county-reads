@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Alachua County Reads</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/branding/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/branding/favicon-16.png" />
+  <link rel="shortcut icon" href="images/branding/favicon.ico" />
+  <link rel="apple-touch-icon" href="images/branding/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="guide/guide.css" />
+</head>
+<body data-audio-title="About Alachua County Reads" data-audio-text="Alachua County Reads is a community literacy resource hub. We believe everyone deserves a clear, welcoming path to literacy resources. Our goal is to use thoughtful technology and trusted community partnerships to make finding help simpler, more accessible, and more human.">
+  <header class="site-header acr-site-header">
+  <a href="index.html" class="acr-logo-link" aria-label="Alachua County Reads Home">
+    <img src="images/logo.png" alt="Alachua County Reads" class="site-logo" />
+  </a>
+
+  <nav class="main-nav acr-main-nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="programs.html">Find Programs</a>
+    <a href="partners.html">Community Partners</a>
+    <a href="submit.html">Submit a Program</a>
+    <a href="about.html" class="active-nav" aria-current="page">About</a>
+  </nav>
+
+  <div class="header-actions acr-header-actions">
+    <button class="listen-button" type="button" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded">volume_up</span>
+      Listen
+    </button>
+  </div>
+</header>
+<section class="audio-guide-strip" aria-label="Audio guide">
+  <div class="audio-guide-main">
+    <span class="material-symbols-rounded" aria-hidden="true">volume_up</span>
+    <div>
+      <strong>Need help reading?</strong>
+      <p>Click Listen to hear this page read aloud.</p>
+    </div>
+  </div>
+  <div class="audio-controls" role="group" aria-label="Audio controls">
+    <button type="button" class="audio-button primary-audio" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+      Listen to this page
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.pauseOrResume()">
+      <span class="material-symbols-rounded" aria-hidden="true">pause</span>
+      Pause / Resume
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.stop()">
+      <span class="material-symbols-rounded" aria-hidden="true">stop</span>
+      Stop
+    </button>
+    <label class="audio-speed-label">
+      Speed
+      <select id="audioSpeed" onchange="ACRAudio.setSpeed(this.value)">
+        <option value="0.75" selected>Slow</option>
+        <option value="0.9">Normal</option>
+        <option value="1.1">Fast</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+
+  <main class="about-page">
+    <div class="about-logo-feature"><img src="images/logo.png" alt="Alachua County Reads" /></div>
+    <section class="about-hero">
+      <div>
+        <p class="eyebrow">A digital front door to literacy support</p>
+        <h1>Helping residents find the right reading support with dignity and confidence.</h1>
+        <p>Alachua County Reads is a community resource platform designed to make literacy help easier to find, easier to understand, and easier to access.</p>
+        <p>We believe everyone deserves a clear, welcoming path to literacy resources. Our goal is to use thoughtful technology and trusted community partnerships to make finding help simpler, more accessible, and more human.</p>
+      </div>
+      <div class="about-hero-icon"><span class="material-symbols-rounded">lightbulb</span></div>
+    </section>
+
+    <section class="about-grid">
+      <article class="about-card large-about-card">
+        <span class="material-symbols-rounded">favorite</span>
+        <h2>Why this exists</h2>
+        <p>Many families, adult learners, caregivers, and service providers know that help exists, but the path to finding the right help can be fragmented. People may need to search across many websites, interpret different eligibility rules, call multiple places, and compare programs without a simple guide.</p>
+        <p>This platform is designed to reduce those barriers by bringing verified literacy-related resources into one accessible, visual, mobile-friendly place. Every major feature is built around one practical goal: helping people reach literacy support faster and with more confidence.</p>
+      </article>
+
+      <article class="about-card">
+        <span class="material-symbols-rounded">accessibility_new</span>
+        <h2>Dignity First Design</h2>
+        <p>The experience is built for people who may have limited reading skills, limited technology experience, language barriers, transportation barriers, or uncertainty about where to begin.</p>
+      </article>
+
+      <article class="about-card">
+        <span class="material-symbols-rounded">visibility</span>
+        <h2>Guide, Don't Hide</h2>
+        <p>The platform recommends helpful starting points while still allowing users to see all available programs. Options are prioritized, not hidden.</p>
+      </article>
+
+      <article class="about-card">
+        <span class="material-symbols-rounded">verified_user</span>
+        <h2>Trust & Verification</h2>
+        <p>The initial program database is based on verified information reviewed for Alachua County Reads. New provider submissions enter a review workflow before appearing publicly as verified resources.</p>
+      </article>
+
+      <article class="about-card">
+        <span class="material-symbols-rounded">groups</span>
+        <h2>Community Stewardship</h2>
+        <p>A small volunteer review team can help maintain the directory, review submissions, contact providers, and keep information accurate as programs change over time.</p>
+      </article>
+    </section>
+
+    <section class="about-review-box">
+      <div>
+        <h2>Version 1.0</h2>
+        <p>This version focuses on a clear, accessible literacy resource experience: visual resource cards, map access, audio-supported navigation, partner visibility, and provider submissions.</p>
+      </div>
+      <a href="programs.html" class="primary-button">Find Programs</a>
+    </section>
+
+    <section class="section about-principles-section">
+      <div class="section-header">
+        <div>
+          <h2>Core Principles</h2>
+          <p>These principles guide current and future development.</p>
+        </div>
+      </div>
+      <div class="principles-grid">
+        <div><strong>People First</strong><p>Design for the person seeking help, then validate with leadership.</p></div>
+        <div><strong>Reduce Friction</strong><p>Make the next step obvious and easy.</p></div>
+        <div><strong>Accessibility by Default</strong><p>Use visuals, plain language, mobile-friendly layouts, bilingual support, and audio guidance.</p></div>
+        <div><strong>Measure What Matters</strong><p>Success is measured by people reaching help, not just clicks.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="acr-footer">
+  <img src="images/logo.png" alt="Alachua County Reads" class="footer-logo" />
+  <p class="footer-tagline">Building Literacy for Life</p>
+  <p>© 2025 Alachua County Reads</p>
+  <p class="footer-links">
+    <a href="index.html">Home</a> ·
+    <a href="programs.html">Find Programs</a> ·
+    <a href="partners.html">Community Partners</a> ·
+    <a href="submit.html">Submit a Program</a> ·
+    <a href="about.html">About</a>
+  </p>
+</footer>
+
+  <script>
+    function speakPageIntro() {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const text = 'Alachua County Reads helps residents find literacy programs and reading support in one accessible place. The platform is designed with dignity, clear navigation, maps, visual cards, and audio support.';
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.9;
+      window.speechSynthesis.speak(utterance);
+    }
+  </script>
+<script src="js/audio-accessibility.js"></script>
+<script src="guide/acr-guide.js"></script>
+</body>
+</html>

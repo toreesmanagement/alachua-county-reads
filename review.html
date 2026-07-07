@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Review Queue | Alachua County Reads</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/branding/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/branding/favicon-16.png" />
+  <link rel="shortcut icon" href="images/branding/favicon.ico" />
+  <link rel="apple-touch-icon" href="images/branding/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="guide/guide.css" />
+</head>
+<body data-audio-title="Review submitted programs" data-audio-text="This review page lets authorized Alachua County Reads staff review submitted programs before they appear publicly. This supports accuracy, legitimacy, and trust.">
+<header class="site-header acr-site-header">
+  <a href="index.html" class="acr-logo-link" aria-label="Alachua County Reads Home">
+    <img src="images/logo.png" alt="Alachua County Reads" class="site-logo" />
+  </a>
+
+  <nav class="main-nav acr-main-nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="programs.html">Find Programs</a>
+    <a href="partners.html">Community Partners</a>
+    <a href="submit.html">Submit a Program</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <div class="header-actions acr-header-actions">
+    <a class="header-link" href="submit.html">Submit Page</a>
+    <button class="listen-button" type="button" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded">volume_up</span>
+      Listen
+    </button>
+  </div>
+</header>
+<section class="audio-guide-strip" aria-label="Audio guide">
+  <div class="audio-guide-main">
+    <span class="material-symbols-rounded" aria-hidden="true">volume_up</span>
+    <div>
+      <strong>Need help reading?</strong>
+      <p>Click Listen to hear this page read aloud.</p>
+    </div>
+  </div>
+  <div class="audio-controls" role="group" aria-label="Audio controls">
+    <button type="button" class="audio-button primary-audio" onclick="ACRAudio.speakPage()">
+      <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+      Listen to this page
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.pauseOrResume()">
+      <span class="material-symbols-rounded" aria-hidden="true">pause</span>
+      Pause / Resume
+    </button>
+    <button type="button" class="audio-button" onclick="ACRAudio.stop()">
+      <span class="material-symbols-rounded" aria-hidden="true">stop</span>
+      Stop
+    </button>
+    <label class="audio-speed-label">
+      Speed
+      <select id="audioSpeed" onchange="ACRAudio.setSpeed(this.value)">
+        <option value="0.75" selected>Slow</option>
+        <option value="0.9">Normal</option>
+        <option value="1.1">Fast</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+<main class="submit-page">
+  <section class="submit-hero board-hero"><div><p class="eyebrow">Internal demo workflow</p><h1>Submission Review Queue</h1><p>Approve verified programs here. Approved programs appear on the public Programs page in this browser demo.</p></div><div class="submit-hero-icon"><span class="material-symbols-rounded">fact_check</span></div></section>
+  <section class="review-stats"><div><strong id="pendingCount">0</strong><span>Pending</span></div><div><strong id="approvedCount">0</strong><span>Approved in Demo</span></div><button onclick="clearDemoSubmissions()"><span class="material-symbols-rounded">delete_sweep</span> Clear Demo Data</button></section>
+  <section id="reviewList" class="review-list"></section>
+</main>
+<footer class="acr-footer">
+  <img src="images/logo.png" alt="Alachua County Reads" class="footer-logo" />
+  <p class="footer-tagline">Building Literacy for Life</p>
+  <p>© 2025 Alachua County Reads</p>
+  <p class="footer-links">
+    <a href="index.html">Home</a> ·
+    <a href="programs.html">Find Programs</a> ·
+    <a href="partners.html">Community Partners</a> ·
+    <a href="submit.html">Submit a Program</a> ·
+    <a href="about.html">About</a>
+  </p>
+</footer>
+<script src="js/submissions.js"></script>
+<script src="js/audio-accessibility.js"></script>
+<script src="guide/acr-guide.js"></script>
+</body>
+</html>
