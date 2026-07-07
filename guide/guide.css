@@ -1,0 +1,332 @@
+/* RC1.4 — ACR Guide */
+
+.acr-guide-launcher {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9100;
+  width: min(330px, calc(100vw - 32px));
+  background: #ffffff;
+  color: #102033;
+  border: 1px solid #e5e2d8;
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 24px 60px rgba(8, 32, 24, 0.22);
+  display: grid;
+  grid-template-columns: 46px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+}
+
+.acr-guide-launcher:hover,
+.acr-guide-launcher:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 28px 70px rgba(8, 32, 24, 0.28);
+  outline: 3px solid rgba(242, 165, 26, 0.35);
+}
+
+.acr-guide-launcher-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: #064e3b;
+  color: #f2a51a;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.acr-guide-launcher-icon .material-symbols-rounded {
+  color: #f2a51a;
+  font-size: 26px;
+}
+
+.acr-guide-launcher-copy strong {
+  display: block;
+  color: #033326;
+  font-size: 16px;
+  line-height: 1.15;
+}
+
+.acr-guide-launcher-copy span {
+  display: block;
+  color: #5f6f7c;
+  font-weight: 700;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.acr-guide-launcher .material-symbols-rounded:last-child {
+  color: #064e3b;
+}
+
+.acr-guide-panel {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9200;
+  width: min(430px, calc(100vw - 32px));
+  max-height: min(720px, calc(100vh - 44px));
+  background: #ffffff;
+  border: 1px solid #e5e2d8;
+  border-radius: 28px;
+  box-shadow: 0 30px 90px rgba(8, 32, 24, 0.28);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.acr-guide-panel.hidden,
+.acr-guide-launcher.hidden {
+  display: none !important;
+}
+
+.acr-guide-header {
+  background: linear-gradient(135deg, #064e3b, #033326);
+  color: #ffffff;
+  padding: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.acr-guide-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.acr-guide-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.14);
+  color: #f2a51a;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.acr-guide-avatar .material-symbols-rounded {
+  color: #f2a51a;
+  font-size: 28px;
+}
+
+.acr-guide-title strong {
+  display: block;
+  font-size: 19px;
+  line-height: 1.1;
+}
+
+.acr-guide-title span {
+  color: #d7ece3;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.acr-guide-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255,255,255,0.14);
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.acr-guide-body {
+  padding: 16px;
+  overflow-y: auto;
+  background: #f7f9f6;
+  display: grid;
+  gap: 12px;
+}
+
+.acr-guide-message {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.acr-guide-message.user {
+  justify-content: flex-end;
+}
+
+.acr-guide-bubble {
+  max-width: 88%;
+  border-radius: 18px;
+  padding: 12px 14px;
+  line-height: 1.45;
+  font-size: 15px;
+}
+
+.acr-guide-message.guide .acr-guide-bubble {
+  background: #ffffff;
+  border: 1px solid #e5e2d8;
+  color: #102033;
+}
+
+.acr-guide-message.user .acr-guide-bubble {
+  background: #064e3b;
+  color: #ffffff;
+}
+
+.acr-guide-bubble strong {
+  color: #033326;
+}
+
+.acr-guide-message.user .acr-guide-bubble strong {
+  color: #ffffff;
+}
+
+.acr-guide-actions {
+  display: grid;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.acr-guide-action {
+  min-height: 50px;
+  border-radius: 16px;
+  border: 1px solid #e5e2d8;
+  background: #ffffff;
+  color: #102033;
+  cursor: pointer;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  text-align: left;
+}
+
+.acr-guide-action:hover,
+.acr-guide-action:focus-visible {
+  background: #fff7df;
+  border-color: #f2a51a;
+  outline: 3px solid rgba(242, 165, 26, 0.22);
+}
+
+.acr-guide-action.primary {
+  background: #064e3b;
+  color: #ffffff;
+  border-color: #064e3b;
+}
+
+.acr-guide-action.primary .material-symbols-rounded {
+  color: #f2a51a;
+}
+
+.acr-guide-action .material-symbols-rounded {
+  color: #064e3b;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.acr-guide-footer {
+  padding: 12px;
+  border-top: 1px solid #e5e2d8;
+  background: #ffffff;
+}
+
+.acr-guide-input-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.acr-guide-input-row input {
+  min-height: 48px;
+  border-radius: 14px;
+  border: 1px solid #d9d6cc;
+  padding: 0 14px;
+  font: inherit;
+  background: #f7f9f6;
+}
+
+.acr-guide-input-row button {
+  min-width: 52px;
+  border-radius: 14px;
+  border: none;
+  background: #064e3b;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.acr-guide-input-row button .material-symbols-rounded {
+  color: #f2a51a;
+}
+
+.acr-guide-note {
+  margin: 10px 2px 0;
+  color: #5f6f7c;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.acr-guide-recommendation {
+  background: #ffffff;
+  border: 1px solid #e5e2d8;
+  border-radius: 18px;
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+}
+
+.acr-guide-recommendation strong {
+  color: #033326;
+}
+
+.acr-guide-recommendation p {
+  margin: 0;
+  color: #5f6f7c;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.acr-guide-mini-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.acr-guide-mini-actions button,
+.acr-guide-mini-actions a {
+  min-height: 38px;
+  border-radius: 12px;
+  padding: 0 12px;
+  border: 1px solid #064e3b;
+  background: #ffffff;
+  color: #064e3b;
+  font-weight: 900;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.acr-guide-mini-actions .primary-mini {
+  background: #064e3b;
+  color: #ffffff;
+}
+
+@media (max-width: 700px) {
+  .acr-guide-launcher {
+    right: 14px;
+    bottom: 14px;
+    width: calc(100vw - 28px);
+  }
+
+  .acr-guide-panel {
+    right: 12px;
+    bottom: 12px;
+    width: calc(100vw - 24px);
+    max-height: calc(100vh - 24px);
+    border-radius: 22px;
+  }
+}
