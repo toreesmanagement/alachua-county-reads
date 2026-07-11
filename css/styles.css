@@ -3683,4 +3683,519 @@ body { padding-bottom:92px; }
   .audio-controls .audio-button { flex:1 1 116px; }
   body { padding-bottom:158px; }
 }
+/* =========================================================
+   RC1.6.1 — VISUAL HARMONY
+   Brand-led palette derived from the official ACR logo.
+   Design principle: Make it easier for people to find help.
+   ========================================================= */
 
+:root {
+  --acr-navy: #123c69;
+  --acr-navy-deep: #0b2f52;
+  --acr-blue: #2f7fb8;
+  --acr-sky: #7ccbe8;
+  --acr-sky-soft: #eaf7fc;
+  --acr-gold: #f4b942;
+  --acr-gold-soft: #fff7df;
+  --acr-green: #78a83f;
+  --acr-green-soft: #eef6e7;
+  --acr-ink: #1f3347;
+  --acr-muted: #607486;
+  --acr-border: #dce8ef;
+  --acr-surface: #ffffff;
+  --acr-surface-warm: #fbfaf6;
+  --acr-shadow: 0 16px 42px rgba(18, 60, 105, 0.10);
+}
+
+/* Overall page tone */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    linear-gradient(180deg, #ffffff 0%, #fbfdff 48%, #f8fbfd 100%) !important;
+  color: var(--acr-ink) !important;
+}
+
+main {
+  position: relative;
+}
+
+h1, h2, h3, h4 {
+  color: var(--acr-navy-deep) !important;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--acr-muted);
+}
+
+a {
+  color: var(--acr-blue);
+}
+
+a:hover,
+a:focus {
+  color: var(--acr-navy-deep);
+}
+
+/* Unified header and navigation */
+.acr-site-header,
+.site-header {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-bottom: 1px solid var(--acr-border) !important;
+  box-shadow: 0 6px 24px rgba(18, 60, 105, 0.06) !important;
+}
+
+.acr-main-nav a,
+.main-nav a {
+  color: var(--acr-navy) !important;
+  border-radius: 12px;
+  transition: background-color .18s ease, color .18s ease, transform .18s ease;
+}
+
+.acr-main-nav a:hover,
+.acr-main-nav a:focus,
+.main-nav a:hover,
+.main-nav a:focus {
+  background: var(--acr-sky-soft) !important;
+  color: var(--acr-navy-deep) !important;
+  transform: translateY(-1px);
+}
+
+.acr-main-nav .active-nav,
+.main-nav .active-nav {
+  background: transparent !important;
+  color: var(--acr-navy-deep) !important;
+  box-shadow: inset 0 -3px 0 var(--acr-blue);
+}
+
+/* Homepage logo: larger, but with breathing room */
+.home-page .site-logo {
+  height: 118px !important;
+  max-width: 300px !important;
+  padding: 7px;
+  border-radius: 16px;
+  background: #ffffff;
+  object-fit: contain;
+}
+
+.home-page .acr-site-header {
+  min-height: 136px !important;
+}
+
+/* Hero: bright, readable, and clearly tied to the logo */
+.hero {
+  background:
+    radial-gradient(circle at 84% 18%, rgba(244, 185, 66, .18), transparent 23%),
+    radial-gradient(circle at 8% 8%, rgba(124, 203, 232, .20), transparent 30%),
+    linear-gradient(135deg, #ffffff 0%, #f3faff 56%, #fffaf0 100%) !important;
+  border: 1px solid var(--acr-border) !important;
+  box-shadow: var(--acr-shadow) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -8% -44% 42%;
+  height: 70%;
+  background: linear-gradient(135deg, rgba(47, 127, 184, .10), rgba(120, 168, 63, .08));
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-content,
+.hero-image {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1,
+.hero h1 span {
+  color: var(--acr-navy-deep) !important;
+  text-shadow: none !important;
+}
+
+.hero .eyebrow,
+.eyebrow {
+  color: var(--acr-blue) !important;
+  background: var(--acr-sky-soft);
+  border: 1px solid #c9e8f5;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+}
+
+.hero-text {
+  color: var(--acr-ink) !important;
+  max-width: 660px;
+}
+
+/* Buttons */
+.primary-button,
+.near-me-button,
+.submit-program-button,
+.listen-button,
+.audio-button.primary-audio,
+.modal-action,
+.recommendation-program button {
+  background: var(--acr-navy) !important;
+  color: #fff !important;
+  border-color: var(--acr-navy) !important;
+  box-shadow: 0 9px 22px rgba(18, 60, 105, .18);
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+.primary-button:hover,
+.near-me-button:hover,
+.submit-program-button:hover,
+.listen-button:hover,
+.audio-button.primary-audio:hover,
+.modal-action:hover,
+.recommendation-program button:hover {
+  background: var(--acr-blue) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 13px 28px rgba(18, 60, 105, .22);
+}
+
+.secondary-button,
+.small-listen,
+.audio-button:not(.primary-audio),
+.back-link,
+.language-toggle {
+  background: #fff !important;
+  color: var(--acr-navy) !important;
+  border-color: #bfd6e3 !important;
+}
+
+.secondary-button:hover,
+.small-listen:hover,
+.audio-button:not(.primary-audio):hover,
+.back-link:hover,
+.language-toggle:hover {
+  background: var(--acr-sky-soft) !important;
+  border-color: var(--acr-blue) !important;
+}
+
+.language-toggle.active-lang {
+  background: var(--acr-navy) !important;
+  color: #fff !important;
+}
+
+/* Icon blocks */
+.stat-icon,
+.age-icon,
+.chooser-icon,
+.near-me-icon,
+.recommendation-icon,
+.recommendation-program-icon,
+.guide-launch-icon,
+.submit-hero-icon,
+.about-hero-icon,
+.partners-hero-card {
+  background: var(--acr-navy) !important;
+}
+
+.stat-icon .material-symbols-rounded,
+.age-icon .material-symbols-rounded,
+.chooser-icon .material-symbols-rounded,
+.near-me-icon .material-symbols-rounded,
+.recommendation-icon .material-symbols-rounded,
+.submit-hero-icon .material-symbols-rounded,
+.about-hero-icon .material-symbols-rounded {
+  color: var(--acr-gold) !important;
+}
+
+/* Section surfaces */
+.audio-guide-strip,
+.chooser-box,
+.near-me-box,
+.search-box,
+.rc-map-panel,
+.board-map-panel,
+.provider-form-card,
+.submit-info-card,
+.partner-card,
+.partner-principles article,
+.about-card,
+.about-external-link,
+.supporting-partners {
+  background: var(--acr-surface) !important;
+  border-color: var(--acr-border) !important;
+  box-shadow: var(--acr-shadow) !important;
+}
+
+/* Age cards */
+.age-card {
+  background: #fff !important;
+  border: 1px solid var(--acr-border) !important;
+  box-shadow: 0 10px 28px rgba(18, 60, 105, .08) !important;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.age-card:hover,
+.age-card:focus-within {
+  transform: translateY(-5px);
+  border-color: var(--acr-sky) !important;
+  box-shadow: 0 20px 44px rgba(18, 60, 105, .14) !important;
+}
+
+.age-card h3 {
+  color: var(--acr-navy-deep) !important;
+}
+
+/* Program cards */
+.program-card,
+.stat-program-card {
+  background: #fff !important;
+  border: 1px solid var(--acr-border) !important;
+  box-shadow: 0 12px 32px rgba(18, 60, 105, .09) !important;
+}
+
+.program-card:hover,
+.stat-program-card:hover {
+  border-color: var(--acr-sky) !important;
+  box-shadow: 0 20px 46px rgba(18, 60, 105, .15) !important;
+}
+
+.program-status,
+.verification-pill {
+  background: var(--acr-green-soft) !important;
+  color: #426b20 !important;
+  border-color: #bfd7a7 !important;
+}
+
+.distance-pill {
+  background: var(--acr-sky-soft) !important;
+  color: var(--acr-navy) !important;
+  border-color: #bedfee !important;
+}
+
+.stat-badge {
+  background: #f8fbfd !important;
+  border-color: var(--acr-border) !important;
+}
+
+.support-badge {
+  background: #f7fafc !important;
+  color: var(--acr-navy-deep) !important;
+  border-color: var(--acr-border) !important;
+}
+
+.support-badge .material-symbols-rounded {
+  background: var(--acr-navy) !important;
+  color: var(--acr-gold) !important;
+}
+
+/* Quick help and chooser */
+.quick-help-card,
+.chooser-card {
+  background: #fff !important;
+  border-color: var(--acr-border) !important;
+  box-shadow: 0 9px 26px rgba(18, 60, 105, .07) !important;
+}
+
+.quick-help-card:hover,
+.chooser-card:hover {
+  background: var(--acr-sky-soft) !important;
+  border-color: var(--acr-sky) !important;
+  transform: translateY(-3px);
+}
+
+.quick-help-card.active-help,
+.chooser-card.active-help {
+  background: var(--acr-navy) !important;
+  border-color: var(--acr-navy) !important;
+}
+
+.quick-help-card.active-help strong,
+.chooser-card.active-help strong {
+  color: #fff !important;
+}
+
+/* Map panel */
+.rc-map-panel,
+.board-map-panel {
+  background:
+    linear-gradient(135deg, #ffffff 0%, #f2f9fd 100%) !important;
+}
+
+.selected-map-program {
+  background: #fff !important;
+  border-color: var(--acr-border) !important;
+}
+
+/* Floating audio controls */
+.audio-controls {
+  background: rgba(255, 255, 255, .98) !important;
+  border-color: #bfd6e3 !important;
+  box-shadow: 0 18px 52px rgba(11, 47, 82, .25) !important;
+}
+
+/* Partners */
+.supporting-partners {
+  background:
+    linear-gradient(135deg, #ffffff 0%, #f6fbfe 100%) !important;
+}
+
+.supporting-partner-logos a {
+  border: 1px solid transparent;
+  transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+
+.supporting-partner-logos a:hover {
+  border-color: var(--acr-border);
+  transform: translateY(-2px);
+  box-shadow: 0 9px 24px rgba(18, 60, 105, .09);
+}
+
+/* About and provider hero panels */
+.about-hero,
+.partners-hero,
+.submit-hero {
+  background:
+    linear-gradient(135deg, var(--acr-navy-deep) 0%, var(--acr-navy) 58%, var(--acr-blue) 100%) !important;
+}
+
+.about-hero h1,
+.partners-hero h1,
+.submit-hero h1 {
+  color: #fff !important;
+}
+
+.about-hero p,
+.partners-hero p,
+.submit-hero p {
+  color: #eaf5fb !important;
+}
+
+/* Forms */
+.provider-form-card input,
+.provider-form-card select,
+.provider-form-card textarea {
+  background: #fbfdff !important;
+  border-color: var(--acr-border) !important;
+}
+
+.provider-form-card input:focus,
+.provider-form-card select:focus,
+.provider-form-card textarea:focus {
+  border-color: var(--acr-blue) !important;
+  outline: 3px solid rgba(124, 203, 232, .28) !important;
+}
+
+/* Footer */
+.acr-footer,
+footer {
+  background: #eef6fa !important;
+  color: var(--acr-ink) !important;
+  border-top: 1px solid var(--acr-border);
+}
+
+.footer-tagline {
+  color: var(--acr-blue) !important;
+}
+
+.acr-footer a,
+footer a {
+  color: var(--acr-navy) !important;
+}
+
+.acr-footer a:hover,
+footer a:hover {
+  color: var(--acr-blue) !important;
+}
+
+/* ACR Guide palette alignment */
+.guide-launch-card,
+.guide-panel,
+.guide-shell,
+.acr-guide-panel {
+  --guide-primary: var(--acr-navy);
+  --guide-accent: var(--acr-gold);
+}
+
+.guide-launch-card,
+.guide-panel,
+.acr-guide-panel {
+  border-color: var(--acr-border) !important;
+  box-shadow: 0 20px 58px rgba(11, 47, 82, .22) !important;
+}
+
+.guide-header,
+.acr-guide-header {
+  background: linear-gradient(135deg, var(--acr-navy-deep), var(--acr-navy)) !important;
+}
+
+.guide-option:hover,
+.guide-quick-action:hover {
+  background: var(--acr-sky-soft) !important;
+  border-color: var(--acr-sky) !important;
+}
+
+/* Gentle movement, while honoring reduced-motion preferences */
+@media (prefers-reduced-motion: no-preference) {
+  .age-card,
+  .program-card,
+  .quick-help-card,
+  .chooser-card,
+  .primary-button,
+  .secondary-button {
+    transition-duration: .2s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* Mobile refinement */
+@media (max-width: 820px) {
+  .home-page .site-logo {
+    height: 86px !important;
+    max-width: 230px !important;
+  }
+
+  .home-page .acr-site-header {
+    min-height: auto !important;
+  }
+
+  .hero {
+    padding: 32px 22px !important;
+  }
+
+  .hero h1 {
+    line-height: 1.05;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-page .site-logo {
+    height: 72px !important;
+    max-width: 190px !important;
+  }
+
+  .hero {
+    border-radius: 22px !important;
+  }
+
+  .hero-actions > * {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .supporting-partners {
+    padding: 20px !important;
+  }
+}
