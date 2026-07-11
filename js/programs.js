@@ -142,6 +142,42 @@ const translations = {
   }
 };
 
+
+
+const spanishValueMap = {
+  "Free": "Gratis", "Low Cost": "Bajo costo", "Sliding Scale": "Escala variable", "Insurance Accepted": "Se acepta seguro", "Income-Based Eligibility": "Elegibilidad según ingresos",
+  "In-Person": "En persona", "Virtual": "Virtual", "Hybrid": "Híbrido", "Either": "En persona o virtual", "Home / Mail": "En casa / Por correo", "Home / Virtual": "En casa / Virtual",
+  "English": "Inglés", "Spanish": "Español", "English / Spanish": "Inglés / Español", "Multiple Languages": "Varios idiomas", "Online": "En línea",
+  "Early Literacy": "Alfabetización temprana", "Mentorship": "Mentoría", "Free Books": "Libros gratis", "Reading Support": "Apoyo de lectura", "Books at Home": "Libros en casa",
+  "Adult Literacy": "Alfabetización para adultos", "English Learners": "Estudiantes de inglés", "Conversation Practice": "Práctica de conversación", "GED Prep": "Preparación para el GED",
+  "Adult Education": "Educación para adultos", "Digital Books": "Libros digitales", "Multilingual": "Multilingüe", "Spanish Available": "Español disponible", "Transportation": "Transporte",
+  "ADA Accessible": "Accesible según ADA", "Dyslexia Support": "Apoyo para dislexia", "ADHD Support": "Apoyo para TDAH", "Autism Support": "Apoyo para autismo",
+  "Family Support": "Apoyo familiar", "Home Visiting": "Visitas al hogar", "Tutoring": "Tutoría", "After-School": "Después de clases", "Homework Help": "Ayuda con tareas",
+  "Academic Support": "Apoyo académico", "Summer": "Verano", "Rural Support": "Apoyo rural", "Literacy Enrichment": "Enriquecimiento de lectura", "School Referral": "Referencia escolar",
+  "Digital Skills": "Habilidades digitales", "Citizenship": "Ciudadanía", "Nutrition": "Nutrición", "Research Study": "Estudio de investigación"
+};
+const spanishPhraseMap = {
+  "Young children building early reading skills.": "Niños pequeños que están desarrollando habilidades iniciales de lectura.",
+  "Children from birth to age five who need books at home.": "Niños desde el nacimiento hasta los cinco años que necesitan libros en casa.",
+  "Florida students who need extra reading practice.": "Estudiantes de Florida que necesitan práctica adicional de lectura.",
+  "Adults who want help with reading, English, or basic learning skills.": "Adultos que desean ayuda con lectura, inglés o habilidades básicas de aprendizaje.",
+  "Adults learning English who want conversation practice.": "Adultos que aprenden inglés y desean practicar conversación.",
+  "Teens and adults preparing for the GED.": "Jóvenes y adultos que se preparan para el GED.",
+  "Children and families who want free digital books.": "Niños y familias que desean libros digitales gratis.",
+  "Contact the program to ask about enrollment and availability.": "Comuníquese con el programa para preguntar sobre inscripción y disponibilidad.",
+  "Visit the program website or call to check eligibility.": "Visite el sitio web del programa o llame para confirmar la elegibilidad.",
+  "Visit the website to learn if the student qualifies.": "Visite el sitio web para saber si el estudiante califica.",
+  "Call or visit the library to ask about adult literacy services.": "Llame o visite la biblioteca para preguntar por servicios de alfabetización para adultos.",
+  "Call or visit the library to ask when the group meets.": "Llame o visite la biblioteca para preguntar cuándo se reúne el grupo.",
+  "Contact the provider to ask about schedules and requirements.": "Comuníquese con el proveedor para preguntar por horarios y requisitos.",
+  "Visit the website to start reading online.": "Visite el sitio web para comenzar a leer en línea."
+};
+function localizeValue(value) {
+  if (currentLanguage !== "es" || value === null || value === undefined) return value;
+  return spanishPhraseMap[value] || spanishValueMap[value] || value;
+}
+function localizeSupportList(items) { return items.map(localizeValue); }
+
 const supportIcons = {
   "Early Literacy": "menu_book",
   "Mentorship": "volunteer_activism",
@@ -208,6 +244,8 @@ function t(key) {
 
 function setLanguage(lang, button) {
   currentLanguage = lang;
+  document.documentElement.lang = lang;
+  try { localStorage.setItem("acrLanguage", lang); } catch (e) {}
 
   document.querySelectorAll(".language-toggle").forEach(btn => {
     btn.classList.remove("active-lang");
@@ -222,6 +260,7 @@ function setLanguage(lang, button) {
 
   loadProgramsPage();
 }
+
 
 function getDirectionsUrl(address) {
   return getTravelUrl(address, 'driving');
@@ -491,7 +530,7 @@ function renderSupportBadges(program) {
   return program.support.map(item => `
     <span class="support-badge">
       <span class="material-symbols-rounded">${getSupportIcon(item)}</span>
-      ${item}
+      ${localizeValue(item)}
     </span>
   `).join("");
 }
@@ -626,7 +665,7 @@ function renderPrograms(list) {
               <span class="material-symbols-rounded">location_on</span>
               <div>
                 <small>${t("location")}</small>
-                <strong>${program.location}</strong>
+                <strong>${localizeValue(program.location)}</strong>
               </div>
             </div>
 
@@ -634,7 +673,7 @@ function renderPrograms(list) {
               <span class="material-symbols-rounded">paid</span>
               <div>
                 <small>${t("cost")}</small>
-                <strong>${program.cost}</strong>
+                <strong>${localizeValue(program.cost)}</strong>
               </div>
             </div>
 
@@ -642,7 +681,7 @@ function renderPrograms(list) {
               <span class="material-symbols-rounded">${formatIcon(program.format)}</span>
               <div>
                 <small>${t("format")}</small>
-                <strong>${program.format}</strong>
+                <strong>${localizeValue(program.format)}</strong>
               </div>
             </div>
 
@@ -650,7 +689,7 @@ function renderPrograms(list) {
               <span class="material-symbols-rounded">language</span>
               <div>
                 <small>${t("language")}</small>
-                <strong>${program.language}</strong>
+                <strong>${localizeValue(program.language)}</strong>
               </div>
             </div>
           </div>
@@ -799,25 +838,25 @@ function openModal(program) {
         <div class="modal-stat-grid">
           <div>
             <span class="material-symbols-rounded">location_on</span>
-            <strong>${program.location}</strong>
+            <strong>${localizeValue(program.location)}</strong>
             <small>${t("location")}</small>
           </div>
 
           <div>
             <span class="material-symbols-rounded">paid</span>
-            <strong>${program.cost}</strong>
+            <strong>${localizeValue(program.cost)}</strong>
             <small>${t("cost")}</small>
           </div>
 
           <div>
             <span class="material-symbols-rounded">${formatIcon(program.format)}</span>
-            <strong>${program.format}</strong>
+            <strong>${localizeValue(program.format)}</strong>
             <small>${t("format")}</small>
           </div>
 
           <div>
             <span class="material-symbols-rounded">language</span>
-            <strong>${program.language}</strong>
+            <strong>${localizeValue(program.language)}</strong>
             <small>${t("language")}</small>
           </div>
         </div>
@@ -831,12 +870,12 @@ function openModal(program) {
 
         <div class="modal-section-block">
           <h4>${t("whoHelps")}</h4>
-          <p>${program.helps}</p>
+          <p>${localizeValue(program.helps)}</p>
         </div>
 
         <div class="modal-section-block">
           <h4>${t("howStart")}</h4>
-          <p>${program.start}</p>
+          <p>${localizeValue(program.start)}</p>
         </div>
 
         <div class="modal-section-block">
@@ -944,7 +983,7 @@ function openRecommendation(type) {
 
       <div>
         <strong>${program.name}</strong>
-        <p>${program.helps}</p>
+        <p>${localizeValue(program.helps)}</p>
       </div>
 
       <button onclick='closeRecommendation(); openModalByName("${encodedName}")'>
